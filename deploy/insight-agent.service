@@ -1,0 +1,15 @@
+[Unit]
+Description=Autonomous Insight Agent: daily run (7-day experiment)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=gianluca
+Group=gianluca
+WorkingDirectory=/home/gianluca/projects/insights
+Environment=HOME=/home/gianluca
+Environment=CLAUDE_CODE_DISABLE_1M_CONTEXT=1
+Environment=PATH=/home/gianluca/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ExecStart=/usr/bin/bash /home/gianluca/projects/insights/run-experiment.sh
+TimeoutStartSec=1800

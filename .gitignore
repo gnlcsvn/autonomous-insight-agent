@@ -11,4 +11,8 @@ public/index.html
 # local dedup state (seed from used-topics.example.json)
 state/used-topics.json
 
+# experiment runtime state + log
+state/experiment.json
+experiment.log
+
 .DS_Store

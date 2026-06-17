@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily trigger for the Autonomous Insight Agent (7-day experiment)
+
+[Timer]
+OnCalendar=*-*-* 06:00:00
+Persistent=true
+RandomizedDelaySec=120
+Unit=insight-agent.service
+
+[Install]
+WantedBy=timers.target
