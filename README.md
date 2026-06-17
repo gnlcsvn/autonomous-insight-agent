@@ -132,7 +132,7 @@ the top of `generate.sh`; the design system for the charts and pages is in `publ
   number. Keep a person in the loop, especially for anything public.
 - It is tuned for a single, short, single-chart insight per run. It is not a general research agent.
 
-## Colophon
+## Credits
 
 This tool, its agent instructions (`prompts/` and `brief/`), and this README were written by Claude
 (via Claude Code) together with Gian-Luca Savino. Fittingly, the same kind of agent that runs the
