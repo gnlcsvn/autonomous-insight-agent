@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{TITLE}}</title>
+  <meta name="description" content="{{SUMMARY}}">
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <div class="draft-banner">DRAFT for review. Not published. All numbers verified against sources; confirm before publishing.</div>
+  <main class="di-wrap">
+    <a class="di-back" href="../../">&larr; review queue</a>
+
+    <header class="di-header">
+      <div class="di-category">Data Insight (draft)</div>
+      <h1 class="di-title">{{TITLE}}</h1>
+      <div class="di-meta">By Gian-Luca Savino &middot; {{DATE_HUMAN}}</div>
+    </header>
+
+    <p class="di-lede">{{LEDE}}</p>
+
+    <!-- CHART. Use ONE of the two patterns below; delete the other.
+         Every number shown here must be a verified claim from verified.json. -->
+    <div class="di-figure-wrap">
+    <figure class="di-figure" id="di-fig-{{SLUG}}">
+      <figcaption class="di-figure__title">{{CHART_TITLE}}</figcaption>
+      <p class="di-figure__sub">{{CHART_SUBTITLE}}</p>
+      <div class="di-chart" role="img" aria-label="{{CHART_ALT}}">
+        {{CHART_BODY}}
+      </div>
+      <div class="di-figure__footer">
+        <span>{{CHART_SOURCE_LINE}}</span>
+        <span class="di-figure__brand">gianlucasavino.com &middot; CC-BY</span>
+      </div>
+    </figure>
+    </div>
+    <button class="di-export" type="button" data-export-target="#di-fig-{{SLUG}}" data-export-name="{{SLUG}}">&darr; Download PNG</button>
+
+    <div class="di-body">
+      {{BODY}}
+    </div>
+
+    <details class="di-method">
+      <summary>How we measured this</summary>
+      <div class="di-method__inner">
+        {{METHOD}}
+      </div>
+    </details>
+
+    <div class="di-sources">
+      <div class="di-sources-title">Sources</div>
+      <ol>
+        {{SOURCES}}
+      </ol>
+    </div>
+
+    <div class="di-end"></div>
+  </main>
+
+  <script src="../../lib/html-to-image.min.js"></script>
+  <script src="../../js/insight.js"></script>
+</body>
+</html>
+
+<!--
+CHART PATTERNS (reference; put the chosen one in {{CHART_BODY}}):
+
+SIMPLE BARS (one series, e.g. a value per year). Each fill width is value/axis_max*100%:
+  <div class="di-row"><div class="di-row__label">2024</div><div class="di-row__track"><div class="di-row__fill" style="width:44%">22%</div></div></div>
+  <div class="di-axis"><span>0%</span><span>50%</span></div>   <!-- axis aligns to the bars automatically; do NOT hardcode padding-left -->
+
+
+100% STACKED BARS (two parts summing to 100%, e.g. share A vs share B per year):
+  <div class="di-srow"><div class="di-srow__label">2026</div><div class="di-srow__track">
+    <div class="di-seg di-seg--a" style="width:68.01%">68.01%</div>
+    <div class="di-seg di-seg--b" style="width:31.99%">31.99%</div>
+  </div></div>
+  <div class="di-legend"><span><i class="sw-a"></i> Series A</span><span><i class="sw-b"></i> Series B</span></div>
+-->

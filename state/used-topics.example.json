@@ -1,0 +1,4 @@
+{
+  "note": "Seed dedup list. Copy to used-topics.json. The agent appends each drafted topic here so it never repeats.",
+  "used": []
+}
