@@ -89,6 +89,22 @@ python3 -m http.server 8000 --directory public   # then visit http://localhost:8
 
 To run it daily, wire `generate.sh` into a `cron` job or a `systemd` timer.
 
+## Let an agent set it up for you
+
+This pipeline is built on Claude Code, so the easiest way to adapt it is to let a coding agent do the
+setup based on your requirements. Clone the repo, open Claude Code (or any coding agent) in the folder,
+and describe your beat in plain language, for example:
+
+> Read the README and the files in `brief/`. I want a daily data insight about **the global shipping
+> industry**, focused on **Europe**, in a **skeptical, plain-spoken** voice. Rewrite
+> `brief/SCOPE_AND_STYLE.md` and `brief/topics.md` to that beat, set `CLAUDE_BIN`, then run
+> `bash generate.sh` and show me the first draft.
+
+The agent reads the brief, rewrites the scope, style, and topic list to your requirements, and runs a
+first draft. The same kind of agent that powers the pipeline can configure it for you, so you rarely
+need to touch the files by hand. The section below is the manual reference for what it (or you) would
+change.
+
 ## Customize it for your own beat
 
 Everything that defines *what* it writes lives in two files, no code changes needed:
