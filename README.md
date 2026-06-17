@@ -22,14 +22,21 @@ The pipeline is a deterministic chain of `claude -p` (headless Claude Code) stag
 flow; the model does each stage. Artifacts are passed file-to-file, and a deterministic gate decides
 pass/fail. It is **fail-closed**: a number that cannot be traced to a source is dropped, not guessed.
 
+```mermaid
+flowchart LR
+    S[scout] --> R[research] --> V[verify] --> W[write] --> G{gate}
+    G -- pass --> Q([review queue])
+    G -- fail --> C[critic] --> G
 ```
-  scout  ->  research  ->  verify  ->  write  ->  gate  ->  (critic, only if the gate failed)
-  pick a    gather the   adversarial  draft from   deterministic checks:
-  Swiss/EU  numbers with  fact-check:  verified     - every number traces to a verified claim
-  topic +   sources       try to       facts only   - every source URL resolves
-  a source                refute each                - no em dashes; chart/method/sources present
-                          number
-```
+
+| Stage | What it does |
+|---|---|
+| **scout** | Picks one Swiss/EU topic that has both a real source and a genuine angle, not a rephrase. |
+| **research** | Gathers the numbers, each captured with its exact source quote and URL. |
+| **verify** | A fresh, adversarial fact-check that tries to *break* every number, not confirm it. |
+| **write** | Drafts the insight using only verified facts. |
+| **gate** | Deterministic checks (code, not the model): every number traces to a verified claim, every source URL resolves, no em dashes, and the chart, methodology, and sources are present. |
+| **critic** | Runs only when the gate fails, and only to fix the specific failure. |
 
 Design choices (with the reasoning, if you want it):
 - **Single deterministic pipeline, not a swarm.** The stages are linearly dependent, so they run in
